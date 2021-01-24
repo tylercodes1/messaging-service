@@ -7,6 +7,6 @@ This is a messaging service API for my future social media-esque website
     * Spring Starter Data JPA
     * Spring Starter Web
     * Spring DevTools
-  * Spring AOP
+    * AspectJ (AOP)
 * slf4j (Logging)
 * Lombok
