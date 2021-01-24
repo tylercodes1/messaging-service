@@ -1,4 +1,4 @@
-# messaging-service
+# messaging-service API
 This is a messaging service API for my future social media-esque website
 
 ## Technologies
