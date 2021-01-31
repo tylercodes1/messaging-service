@@ -14,4 +14,21 @@ public class MessageService {
 
     public List<Message> findAll() { return messageRepo.findAll();}
 
+    public Message findByMessageId(int id) {return messageRepo.findByMessageId(id);}
+
+    public boolean save(Message message) {
+        // message cannot be null
+        if (message == null){
+            return false;
+        }
+
+        try {
+            messageRepo.save(message);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+
+    }
+
 }

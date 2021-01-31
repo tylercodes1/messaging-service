@@ -1,13 +1,13 @@
-package com.tkapps.social.service.message;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-@SpringBootTest
-class MessageApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+//package com.tkapps.social.service.message;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//@SpringBootTest
+//class MessageApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}
