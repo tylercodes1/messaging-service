@@ -1,4 +1,4 @@
-package com.tkapps.social.service.message;
+package com.tkapps.social.service.message.controllers;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;

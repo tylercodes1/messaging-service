@@ -1,4 +1,4 @@
-package com.tkapps.social.service.message;
+package com.tkapps.social.service.message.controllers;
 
 import com.tkapps.social.service.message.controller.HelloController;
 
