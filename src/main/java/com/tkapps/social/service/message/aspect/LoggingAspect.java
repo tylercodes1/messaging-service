@@ -15,7 +15,6 @@ public class LoggingAspect {
 
     @Pointcut("within(com.tkapps.social.service.message.controller..*)")
     public void applicationPackagePointcut() {
-
     }
 
     @Before("applicationPackagePointcut()")
@@ -30,7 +29,7 @@ public class LoggingAspect {
 
     @AfterThrowing(pointcut = "applicationPackagePointcut()", throwing = "e")
     public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
-        logger.info(joinPoint.getSignature().getName());
+        logger.error(joinPoint.getSignature().getName());
         logger.error("Exception in {}.{}() with cause = {}", joinPoint.getSignature().getDeclaringTypeName(),
                 joinPoint.getSignature().getName(), e.getCause() != null ? e.getCause() : "NULL");
     }
