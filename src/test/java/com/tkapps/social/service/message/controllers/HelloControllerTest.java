@@ -32,8 +32,15 @@ public class HelloControllerTest {
     }
 
     @Test
-    void testError() throws Exception {
-        mockMvc.perform(get("/error"))
-                .andExpect(status().is4xxClientError());
+    void testErrorTrue() throws Exception {
+        boolean bool = true;
+        mockMvc.perform(get("/hello/error/{bool}", bool).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().is5xxServerError());
+    }
+
+    @Test
+    void testErrorFalse() throws Exception {
+        mockMvc.perform(get("/hello/error/false").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
     }
 }
