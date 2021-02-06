@@ -15,7 +15,6 @@ public class LoggingAspect {
 
     @Pointcut("within(com.tkapps.social.service.message.controller..*)")
     public void applicationPackagePointcut() {
-
     }
 
     @Before("applicationPackagePointcut()")
@@ -29,9 +28,10 @@ public class LoggingAspect {
     }
 
     @AfterThrowing(pointcut = "applicationPackagePointcut()", throwing = "e")
-    public void logAfterThrowing(JoinPoint jointPoint, Throwable e) {
-        logger.error("Exception in {}.{}() with cause = {}", jointPoint.getSignature().getDeclaringTypeName(),
-                jointPoint.getSignature().getName(), e.getCause() != null ? e.getCause() : "NULL");
+    public void logAfterThrowing(JoinPoint joinPoint, Throwable e) {
+        logger.error(joinPoint.getSignature().getName());
+        logger.error("Exception in {}.{}() with cause = {}", joinPoint.getSignature().getDeclaringTypeName(),
+                joinPoint.getSignature().getName(), e.getCause() != null ? e.getCause() : "NULL");
     }
 
     @AfterReturning("applicationPackagePointcut()")
@@ -42,7 +42,7 @@ public class LoggingAspect {
         logger.info(joinPoint.getSignature().getName());
         logger.info(joinPoint.getSignature().getDeclaringTypeName());
         logger.info(joinPoint.getSignature().getDeclaringType().getName());
-        logger.info(joinPoint.getArgs().toString());
+        logger.info(Arrays.toString(joinPoint.getArgs()));
         logger.info(joinPoint.getThis().toString());
         logger.info("Testing this theory {} + {}", 1, 3);
         logger.info("end");

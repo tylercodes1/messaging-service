@@ -19,7 +19,7 @@ public class MessageController {
     MessageService messageService;
 
     @ApiOperation(value = "Finds all messages in the database.")
-    @GetMapping("/")
+    @GetMapping("")
     public List<Message> findAll() {
         return messageService.findAll();
     }
@@ -28,18 +28,5 @@ public class MessageController {
     @GetMapping("/{id}")
     public Message findByMessageId(@PathVariable("id") int id) {
         return messageService.findByMessageId(id);
-    }
-
-    @ApiOperation(value = "Returns \"Hello, World\" to ensure CORS policies aren't blocked")
-    @GetMapping("/hello")
-    public String hello() {
-        System.out.println("This is hello");
-        return "Hello, World";
-    }
-
-    @GetMapping("/error")
-    public String error() throws Exception {
-        if (true) throw new Exception("For understanding logging and Aspect4J only.");
-        return "For understanding logging and Aspect4J only.";
     }
 }
