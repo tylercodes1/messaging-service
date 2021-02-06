@@ -1,10 +1,8 @@
 package com.tkapps.social.service.message.controller;
 
+import com.tkapps.social.service.message.exceptions.TestControllerException;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -17,9 +15,9 @@ public class HelloController {
         return "Hello, World";
     }
 
-    @GetMapping("/error")
-    public String error() throws Exception {
-        if (true) throw new Exception("For understanding logging and Aspect4J only.");
-        return "For understanding logging and Aspect4J only.";
+    @GetMapping("/error/{error}")
+    public String error(@PathVariable("error") boolean error) throws TestControllerException {
+        if (error) throw new TestControllerException("For understanding logging and Aspect4J only.");
+        return "No error thrown";
     }
 }
