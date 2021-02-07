@@ -107,7 +107,7 @@
 				<artifactId>heroku-maven-plugin</artifactId>
 				<version>3.0.3</version>
 				<configuration>
-<!--					<appName>message-service</appName>-->
+					<appName>message-service</appName>
 					<processTypes>
 						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* MessageApplication</web>
 					</processTypes>
