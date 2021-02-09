@@ -1,6 +1,8 @@
 # messaging-service API
 This is a messaging service API for my future social media-esque website
 
+## [Documentation][Documentation]
+
 ## Technologies
 * Spring
   * Spring Boot
@@ -35,3 +37,4 @@ This is a messaging service API for my future social media-esque website
 [Heroku]: https://www.heroku.com/
 [GoogleCloud]: https://cloud.google.com/
 [Azure]: https://azure.microsoft.com/en-us/
+[Documentation]: https://message-service.herokuapp.com/swagger-ui.html#/
