@@ -1,5 +1,6 @@
 package com.tkapps.social.service.message.controller;
 
+import com.tkapps.social.service.message.models.DTO.MessageDTO;
 import com.tkapps.social.service.message.models.Message;
 import com.tkapps.social.service.message.service.MessageService;
 
@@ -29,4 +30,8 @@ public class MessageController {
     public Message findByMessageId(@PathVariable("id") int id) {
         return messageService.findByMessageId(id);
     }
+
+    @ApiOperation(value = "")
+    @PostMapping("")
+    public MessageDTO save(@RequestBody MessageDTO message) { return messageService.save(message); }
 }
