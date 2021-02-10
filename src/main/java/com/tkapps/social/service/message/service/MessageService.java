@@ -1,5 +1,6 @@
 package com.tkapps.social.service.message.service;
 
+import com.tkapps.social.service.message.models.DTO.MessageDTO;
 import com.tkapps.social.service.message.models.Message;
 import com.tkapps.social.service.message.repo.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,15 @@ public class MessageService {
 
     public Message findByMessageId(int id) {return messageRepo.findByMessageId(id);}
 
-    public boolean save(Message message) {
+    public MessageDTO save(MessageDTO messageDTO) {
+        if (messageDTO.getMessage() == null)
+            throw new IllegalArgumentException();
+
         try {
-            messageRepo.save(message);
-            return true;
+            Message message = new Message(0, messageDTO.getMessage());
+            return new MessageDTO(messageRepo.save(message).getMessage());
         } catch (IllegalArgumentException e) {
-            return false;
+            throw e;
         }
     }
 

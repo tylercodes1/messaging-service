@@ -1,5 +1,6 @@
 package com.tkapps.social.service.message.service;
 
+import com.tkapps.social.service.message.models.DTO.MessageDTO;
 import com.tkapps.social.service.message.models.Message;
 import com.tkapps.social.service.message.repo.MessageRepo;
 import org.junit.jupiter.api.Test;
@@ -46,18 +47,32 @@ public class MessageServiceTest {
 
     @Test
     void testSuccessfulSave() {
+        MessageDTO messageDTO = new MessageDTO("Hello");
         Message message = new Message(0, "Hello");
         when(messageRepo.save(message)).thenReturn(message);
 
-        assertTrue(messageService.save(message));
+        assertEquals(messageDTO, messageService.save(messageDTO));
     }
 
     @Test
-    void testUnsuccessfulSave() {
+    void testIllegalArgsSave() {
+        MessageDTO messageDTO = new MessageDTO("Hello");
         Message message = new Message(0, "Hello");
         when(messageRepo.save(message)).thenThrow(IllegalArgumentException.class);
 
-        assertFalse(messageService.save(message));
+        assertThrows(IllegalArgumentException.class, () -> {
+            messageService.save(messageDTO);
+        });
+    }
+
+    @Test
+    void testMessageNullSave() {
+        MessageDTO messageDTO = new MessageDTO(null);
+        Message message = new Message(0, "Hello");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            messageService.save(messageDTO);
+        });
     }
 
 }
