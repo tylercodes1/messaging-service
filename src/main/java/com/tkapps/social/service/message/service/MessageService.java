@@ -1,6 +1,7 @@
 package com.tkapps.social.service.message.service;
 
 import com.tkapps.social.service.message.VO.ResponseTemplateVO;
+import com.tkapps.social.service.message.VO.ResponseTemplateVOS;
 import com.tkapps.social.service.message.VO.User;
 import com.tkapps.social.service.message.models.DTO.MessageDTO;
 import com.tkapps.social.service.message.models.Message;
@@ -37,13 +38,23 @@ public class MessageService {
     }
 
     public ResponseTemplateVO getMessageWithUser(int messageId) {
-        ResponseTemplateVO vo = new ResponseTemplateVO();
         Message message = messageRepo.findByMessageId(messageId);
-
         User user = restTemplate.getForObject("http://localhost:8081/users/" + message.getUserId(), User.class);
+
+        ResponseTemplateVO vo = new ResponseTemplateVO();
         vo.setMessage(message);
         vo.setUser(user);
 
         return vo;
+    }
+
+    public ResponseTemplateVOS getMessagesWithUser(int id) {
+        List<Message> messages = messageRepo.findByUserId(id);
+        User user = restTemplate.getForObject("http://localhost:8081/users/" + id, User.class);
+
+        ResponseTemplateVOS vos = new ResponseTemplateVOS();
+        vos.setMessages(messages);
+        vos.setUser(user);
+        return vos;
     }
 }
