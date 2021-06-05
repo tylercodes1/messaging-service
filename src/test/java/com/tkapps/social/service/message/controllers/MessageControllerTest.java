@@ -32,43 +32,43 @@ import java.util.List;
 @WebMvcTest(MessageController.class)
 public class MessageControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private MessageService messageService;
-
-    @InjectMocks
-    private MessageController messageController;
-
-    @BeforeEach
-    public void setup() { this.mockMvc = MockMvcBuilders.standaloneSetup(messageController).build(); }
-
-    Message mockMessage0 = new Message(0, "Hey");
-    Message mockMessage1 = new Message(1, "Wassup");
-
-    List<Message> messages = new ArrayList<>();
-
-    @Test
-    void testFindAll() throws Exception {
-        messages.add(mockMessage0);
-        messages.add(mockMessage1);
-        Mockito.when(messageService.findAll()).thenReturn(messages);
-        ResultActions actions = mockMvc.perform(get("/message/"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$", hasSize(2)));
-
-        // TODO create more robust testing: add testing to see if fields exist.
-        // https://stackoverflow.com/questions/15371022/springmvc-mockmvc-jsonpath-compare-list-of-strings
-    }
-
-    @Test
-    void testFindByMessageId() throws Exception {
-        Mockito.when(messageService.findByMessageId(0)).thenReturn(mockMessage0);
-        ResultActions actions = mockMvc.perform(get("/message/0"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.messageId",is(0)));
-    }
+//    @Autowired
+//    private MockMvc mockMvc;
+//
+//    @MockBean
+//    private MessageService messageService;
+//
+//    @InjectMocks
+//    private MessageController messageController;
+//
+//    @BeforeEach
+//    public void setup() { this.mockMvc = MockMvcBuilders.standaloneSetup(messageController).build(); }
+//
+//    Message mockMessage0 = new Message(0, "Hey");
+//    Message mockMessage1 = new Message(1, "Wassup");
+//
+//    List<Message> messages = new ArrayList<>();
+//
+//    @Test
+//    void testFindAll() throws Exception {
+//        messages.add(mockMessage0);
+//        messages.add(mockMessage1);
+//        Mockito.when(messageService.findAll()).thenReturn(messages);
+//        ResultActions actions = mockMvc.perform(get("/message/"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(jsonPath("$", hasSize(2)));
+//
+//        // TODO create more robust testing: add testing to see if fields exist.
+//        // https://stackoverflow.com/questions/15371022/springmvc-mockmvc-jsonpath-compare-list-of-strings
+//    }
+//
+//    @Test
+//    void testFindByMessageId() throws Exception {
+//        Mockito.when(messageService.findByMessageId(0)).thenReturn(mockMessage0);
+//        ResultActions actions = mockMvc.perform(get("/message/0"))
+//                .andExpect(status().isOk())
+//                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+//                .andExpect(jsonPath("$.messageId",is(0)));
+//    }
 }
