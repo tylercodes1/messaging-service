@@ -1,5 +1,6 @@
 package com.tkapps.social.service.message.controller;
 
+import com.tkapps.social.service.message.VO.ResponseTemplateVO;
 import com.tkapps.social.service.message.models.DTO.MessageDTO;
 import com.tkapps.social.service.message.models.Message;
 import com.tkapps.social.service.message.service.MessageService;
@@ -33,5 +34,11 @@ public class MessageController {
 
     @ApiOperation(value = "")
     @PostMapping("")
-    public MessageDTO save(@RequestBody MessageDTO message) { return messageService.save(message); }
+    public Message save(@RequestBody MessageDTO message) { return messageService.save(message); }
+
+    @ApiOperation(value = "")
+    @GetMapping("/full/{id}")
+    public ResponseTemplateVO getMessageWithUser(@PathVariable("id") int id) {
+        return messageService.getMessageWithUser(id);
+    }
 }

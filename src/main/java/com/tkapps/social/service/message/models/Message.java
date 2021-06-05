@@ -18,6 +18,6 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int messageId;
-
     private String message;
+    private int userId;
 }
