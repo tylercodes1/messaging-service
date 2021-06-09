@@ -39,7 +39,7 @@ public class MessageService {
 
     public ResponseTemplateVO getMessageWithUser(int messageId) {
         Message message = messageRepo.findByMessageId(messageId);
-        User user = restTemplate.getForObject("http://localhost:8081/users/" + message.getUserId(), User.class);
+        User user = restTemplate.getForObject("https://user-service-tk.herokuapp.com/users/" + message.getUserId(), User.class);
 
         ResponseTemplateVO vo = new ResponseTemplateVO();
         vo.setMessage(message);
@@ -50,7 +50,7 @@ public class MessageService {
 
     public ResponseTemplateVOS getMessagesWithUser(int id) {
         List<Message> messages = messageRepo.findByUserId(id);
-        User user = restTemplate.getForObject("http://localhost:8081/users/" + id, User.class);
+        User user = restTemplate.getForObject("https://user-service-tk.herokuapp.com/users/" + id, User.class);
 
         ResponseTemplateVOS vos = new ResponseTemplateVOS();
         vos.setMessages(messages);
